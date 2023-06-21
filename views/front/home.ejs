@@ -1,0 +1,39 @@
+<%- include('../front/header.ejs') %>
+    <section class="banner">
+        <div class="banner-box">
+            <div class="intro-text">
+                <div class="intro-text-box">
+                    <h1>Lorem Ipsum is simply dummy text</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s</p>
+                </div>
+            </div>
+            <img src="/assets/images/banner.jpg" alt="banner" />
+        </div>
+    </section><br>
+    <h1 class="text-center">Recent Blogs...</h1>
+    <section class="featured-blog mtb-40">
+        <div class="container">
+            <div class="row">
+                <% d.forEach((item)=>{ %>
+                    <div class="col-md-4 card">
+                        <div class="blog-box card-body">
+                            <img src="<%= item.image.url %>" height="233" width="350" alt="blog1" />
+                           <div class="card-title">
+                                <%= item.title %>
+                            </div>
+                            <p>
+                                <%= item.createdAt.toLocaleDateString() %>
+                            </p>
+                            <div class="card-text">
+                                <%= item.description.slice(0,100) %>
+                            </div>
+                            <a href="/blogdetail/<%= item._id %>" class="btn btn-danger">Read more...</a>
+                        </div>
+                    </div>
+                    <% }) %>
+
+            </div>
+        </div>
+    </section>
+    <%- include('../front/footer.ejs') %>
